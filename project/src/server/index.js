@@ -16,11 +16,9 @@ app.get('/favicon.ico', (req, res) => {
     res.sendStatus(404);
 });
 
-app.get('/:rover/:date', async (req, res) => {
-    const rover = req.params.rover
-    const date = req.params.date
-    
-    const url = `https://api.nasa.gov/mars-photos/api/v1/rovers/${rover}/photos?earth_date=${date}&api_key=${process.env.API_KEY}`
+app.get('/:rover', async (req, res) => {
+    const rover = req.params.rover    
+    const url = `https://api.nasa.gov/mars-photos/api/v1/rovers/${rover}/latest_photos?&api_key=${process.env.API_KEY}`
 
     try {
         let image = await fetch(url)
