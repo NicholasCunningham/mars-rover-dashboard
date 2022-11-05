@@ -55,7 +55,7 @@ const Greeting = (name) => {
 }
 
 const RoverInfo = (store) => {    
-    let { currentRover, roverInfo } = store
+    const { currentRover, roverInfo } = store
 
     // Create rover buttons on initial page load so we can select a rover
     if (!currentRover || currentRover.size < 1) {
@@ -144,7 +144,7 @@ const buildPage = (pageBuilder) => {
 const buildSuccessPage = () => {
     const { latest_photos } = store.roverInfo.image
     const numPhotos = latest_photos.length
-    let randomPhotoIndex = Math.floor(Math.random() * numPhotos)
+    const randomPhotoIndex = Math.floor(Math.random() * numPhotos)
 
     return (
         `
@@ -163,7 +163,7 @@ const buildSuccessPage = () => {
 
 // ---------------------------------------------------------------  API CALL
 const getRoverInfo = () => {    
-    let { currentRover } = store
+    const { currentRover } = store
 
     fetch(`http://localhost:3000/${currentRover.get(0)}`)
         .then(res => res.json())
